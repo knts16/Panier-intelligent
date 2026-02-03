@@ -1,0 +1,65 @@
+========================================
+  ENVOYER LES FICHIERS SUR GITHUB
+  SANS GIT - Méthode par le site web
+========================================
+
+Étape 1 - Ouvre ton dépôt sur GitHub
+------------------------------------
+Dans ton navigateur, va sur :
+  https://github.com/knts16/Panier-intelligent
+
+Étape 2 - Ouvrir la page d'upload
+---------------------------------
+- Clique sur le bouton vert "Add file"
+- Choisis "Upload files"
+
+Étape 3 - Préparer les fichiers sur ton PC
+-----------------------------------------
+- Ouvre l'Explorateur Windows
+- Va dans : Bureau (Desktop) > panier_intelligent
+- Ouvre le dossier "panier_intelligent"
+
+Étape 4 - Sélectionner TOUS les fichiers et dossiers
+----------------------------------------------------
+Sélectionne tout ce qui est dans le dossier (Ctrl+A) SAUF :
+  - Ne pas sélectionner le dossier ".git" s'il existe
+  - Ne pas sélectionner le dossier "__pycache__" s'il existe
+  - Ne pas sélectionner le fichier "purchases.db" s'il existe
+
+À sélectionner (tout le reste) :
+  - app.py
+  - db.py
+  - services.py
+  - wsgi.py
+  - requirements.txt
+  - Procfile
+  - runtime.txt
+  - README.md
+  - .gitignore
+  - .gitattributes
+  - Le dossier "static" (avec styles.css dedans)
+  - Le dossier "templates" (avec base.html et index.html dedans)
+  - Le dossier "tests" (avec test_top_product.py dedans)
+  - Les fichiers .bat, .md, .ps1, .txt (guides) si tu veux
+
+Étape 5 - Glisser-déposer sur GitHub
+------------------------------------
+- Dans la fenêtre GitHub "Upload files", il y a une zone "Drag files here"
+- Glisse-dépose TOUS les fichiers et dossiers que tu as sélectionnés
+  (tu peux faire plusieurs glisser-déposer : d'abord les fichiers, puis le dossier static, puis templates, puis tests)
+
+OU alors :
+- Clique sur "choose your files" et sélectionne tout (fichiers + ouvrir chaque dossier et ajouter les fichiers dedans)
+
+Étape 6 - Valider
+-----------------
+- En bas de la page, dans "Commit message", écris : Premier envoi des fichiers
+- Clique sur le bouton vert "Commit changes"
+
+Étape 7 - Vérifier
+------------------
+Rafraîchis la page (F5). Tu dois voir : app.py, db.py, requirements.txt, static/, templates/, tests/, etc.
+
+========================================
+Si le dépôt affiche déjà un README ou autre fichier créé sur GitHub, tu peux quand même faire "Upload files" et ajouter les tiens. Tous les fichiers apparaîtront ensemble.
+========================================

@@ -1,189 +1,76 @@
-# 🛒 Panier Intelligent
+# Panier Intelligent
 
-Application de gestion et d'analyse des achats personnels permettant de suivre, analyser et optimiser vos dépenses.
+Application web Flask pour suivre et analyser vos dépenses.
 
-## 📋 Description du Projet
+## Fonctionnalités
 
-Panier Intelligent est une application web qui permet aux utilisateurs de :
-- Enregistrer leurs achats quotidiens
-- Consulter l'historique de leurs dépenses
-- Identifier leurs produits les plus achetés
-- Suivre leur bilan financier
+- **US-01** : Ajout d'un achat (nom, prix, date)
+- **US-02** : Consultation de l'historique trié par date
+- **US-03** : Analyse du produit le plus acheté
+- **US-04** : Bilan financier avec total des dépenses
 
-## ✨ Fonctionnalités
-
-### 1. Ajout d'Achat
-Formulaire permettant d'enregistrer un nouvel achat avec :
-- **Nom du produit** : Description de l'article acheté
-- **Prix** : Montant en devise (nombre positif uniquement)
-- **Date d'achat** : Date de la transaction
-
-### 2. Historique des Achats
-Affichage de la liste complète des courses avec :
-- Tri chronologique (du plus récent au plus ancien)
-- Vue détaillée de chaque achat
-- Filtrage par période (optionnel)
-
-### 3. Analyse "Top Produit"
-Calcul et affichage du produit le plus acheté :
-- Basé sur le nombre d'occurrences (pas le montant)
-- Analyse sur une période sélectionnable
-- Visualisation des statistiques
-
-### 4. Bilan Financier
-Affichage du montant total des dépenses :
-- Calcul automatique sur la liste affichée
-- Vue d'ensemble des dépenses
-- Suivi budgétaire
-
-## 🛠️ Technologies Envisagées
-
-- **Frontend** : React / Vue.js / Angular
-- **Backend** : Node.js / Python / Java
-- **Base de données** : PostgreSQL / MongoDB
-- **Gestion de projet** : Jira (Scrum/Kanban)
-- **Version Control** : Git / GitHub
-
-## 📁 Structure du Projet
-
-```
-panier-intelligent/
-├── README.md
-├── docs/
-│   ├── specifications.md
-│   ├── architecture.md
-│   └── user-stories.md
-├── src/
-│   ├── frontend/
-│   ├── backend/
-│   └── database/
-└── tests/
-```
-
-## 🚀 Démarrage Rapide
-
-### Prérequis
-- Node.js (v16+)
-- npm ou yarn
-- Git
-
-### Installation
+## Installation locale
 
 ```bash
-# Cloner le repository
-git clone https://github.com/votre-username/panier-intelligent.git
+# Installer les dépendances
+pip install -r requirements.txt
 
-# Accéder au répertoire
-cd panier-intelligent
-
-# Installer les dépendances (à venir)
-npm install
-
-# Lancer l'application (à venir)
-npm start
+# Lancer l'application
+python app.py
 ```
 
-## 📊 Méthodologie de Développement
+L'application sera accessible sur `http://127.0.0.1:5000`
 
-Ce projet suit une méthodologie Agile avec :
-- **Sprints** de 2 semaines
-- **Daily standups** pour la synchronisation d'équipe
-- **Sprint reviews** et **retrospectives**
-- **Backlog** priorisé selon la valeur métier
+## Déploiement sur Render
 
-## 🎯 User Stories Principales
+1. **Créer un compte GitHub** et pousser le code :
+   ```bash
+   git init -b main
+   git add .
+   git commit -m "Initial commit"
+   git remote add origin https://github.com/VOTRE_COMPTE/panier-intelligent.git
+   git push -u origin main
+   ```
 
-### US-01 : Ajout d'un Achat
-**En tant qu'** utilisateur  
-**Je veux** pouvoir ajouter un achat avec son nom, prix et date  
-**Afin de** garder une trace de mes dépenses
+2. **Créer un compte Render** sur https://render.com
 
-**Critères d'acceptation :**
-- Le formulaire contient 3 champs : nom, prix, date
-- Le prix doit être un nombre positif
-- La date ne peut pas être dans le futur
-- Un message de confirmation s'affiche après l'ajout
+3. **Créer un nouveau Web Service** :
+   - Connecter votre repository GitHub
+   - **Build Command** : `pip install -r requirements.txt`
+   - **Start Command** : `gunicorn wsgi:app`
+   - **Plan** : Free
 
-### US-02 : Consultation de l'Historique
-**En tant qu'** utilisateur  
-**Je veux** voir la liste de mes achats triée par date  
-**Afin de** suivre chronologiquement mes dépenses
+4. **Variables d'environnement** (optionnel mais recommandé) :
+   - `SECRET_KEY` : Une clé secrète aléatoire pour Flask
 
-**Critères d'acceptation :**
-- Les achats sont affichés du plus récent au plus ancien
-- Chaque ligne affiche : nom, prix, date
-- La liste est scrollable si nombreux achats
+5. Render générera automatiquement une URL publique du type :
+   `https://panier-intelligent.onrender.com`
 
-### US-03 : Analyse Top Produit
-**En tant qu'** utilisateur  
-**Je veux** connaître mon produit le plus acheté  
-**Afin de** identifier mes habitudes de consommation
+## Structure du projet
 
-**Critères d'acceptation :**
-- Le calcul se base sur le nombre d'occurrences
-- Une période peut être sélectionnée
-- Le produit gagnant est clairement affiché
+```
+panier_intelligent/
+├── app.py              # Application Flask principale
+├── db.py               # Modèles et configuration SQLAlchemy
+├── services.py         # Logique métier
+├── wsgi.py             # Point d'entrée pour production
+├── Procfile            # Configuration pour Render
+├── requirements.txt    # Dépendances Python
+├── templates/          # Templates HTML
+├── static/            # Fichiers CSS
+└── tests/             # Tests unitaires
+```
 
-### US-04 : Bilan Financier
-**En tant qu'** utilisateur  
-**Je veux** voir le total de mes dépenses  
-**Afin de** contrôler mon budget
+## Tests
 
-**Critères d'acceptation :**
-- Le total est calculé automatiquement
-- Le montant s'affiche avec la devise
-- Le calcul correspond à la liste affichée
+```bash
+pytest
+```
 
-## 🤝 Contribution
+## Technologies
 
-Les contributions sont les bienvenues ! Pour contribuer :
-
-1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
-
-## 📝 Conventions de Code
-
-- Utiliser des noms de variables descriptifs
-- Commenter le code complexe
-- Suivre les standards ESLint/Prettier
-- Écrire des tests unitaires pour les nouvelles fonctionnalités
-
-## 📅 Roadmap
-
-### Phase 1 - MVP (Sprint 1-2)
-- ✅ Setup du projet
-- [ ] Ajout d'achat (US-01)
-- [ ] Historique basique (US-02)
-
-### Phase 2 - Fonctionnalités Core (Sprint 3-4)
-- [ ] Top produit (US-03)
-- [ ] Bilan financier (US-04)
-
-### Phase 3 - Améliorations (Sprint 5+)
-- [ ] Filtres avancés
-- [ ] Graphiques et visualisations
-- [ ] Export des données
-- [ ] Mode hors-ligne
-
-## 📄 Licence
-
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
-## 👥 Équipe
-
-- **Product Owner** : nesline
-- **Scrum Master** : nesline
-- **Développeurs** : nesline
-
-## 📞 Contact
-
-Pour toute question ou suggestion, n'hésitez pas à ouvrir une issue sur GitHub.
-
----
-
-**Version** : 0.1.0  
-**Dernière mise à jour** : Février 2026  
-**Statut** : 🚧 En développement initial
+- Python 3.14+
+- Flask 3.0.2
+- SQLAlchemy 2.0.36
+- SQLite (base de données)
+- Gunicorn (serveur WSGI pour production)
